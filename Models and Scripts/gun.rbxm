@@ -1,0 +1,5948 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Tool" referent="RBX0">
+		<Properties>
+			<bool name="CanBeDropped">true</bool>
+			<bool name="Enabled">true</bool>
+			<CoordinateFrame name="Grip">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+				<R00>1</R00>
+				<R01>0</R01>
+				<R02>0</R02>
+				<R10>0</R10>
+				<R11>1</R11>
+				<R12>0</R12>
+				<R20>0</R20>
+				<R21>0</R21>
+				<R22>1</R22>
+			</CoordinateFrame>
+			<string name="Name">AK-47</string>
+			<Content name="TextureId"><null></null></Content>
+			<string name="ToolTip"></string>
+		</Properties>
+		<Item class="Part" referent="RBX1">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">26</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>1.22803712</Y>
+					<Z>-1.05199909</Z>
+					<R00>-1</R00>
+					<R01>1.65131223e-005</R01>
+					<R02>3.98717275e-005</R02>
+					<R10>3.98712946e-005</R10>
+					<R11>0.707056105</R11>
+					<R12>0.707157493</R12>
+					<R20>-1.65141701e-005</R20>
+					<R21>0.707157493</R21>
+					<R22>-0.707056105</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX2">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.159999996</X>
+						<Y>0.319999993</Y>
+						<Z>0.200000003</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX3">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX4">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">26</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>1.62802744</Y>
+					<Z>-1.23599434</Z>
+					<R00>-1</R00>
+					<R01>4.22892981e-006</R01>
+					<R02>4.29479442e-005</R02>
+					<R10>4.29477659e-005</R10>
+					<R11>0.195082352</R11>
+					<R12>0.98078686</R12>
+					<R20>-4.23070696e-006</R20>
+					<R21>0.98078686</R21>
+					<R22>-0.195082352</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX5">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.159999996</X>
+						<Y>0.319999993</Y>
+						<Z>0.200000003</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX6">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX7">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">26</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>1.70802414</Y>
+					<Z>-1.25199413</Z>
+					<R00>-1</R00>
+					<R01>2.11667088e-006</R01>
+					<R02>4.31047993e-005</R02>
+					<R10>4.31047447e-005</R10>
+					<R11>0.0979991928</R11>
+					<R12>0.995186508</R12>
+					<R20>-2.11775318e-006</R20>
+					<R21>0.995186508</R21>
+					<R22>-0.0979991853</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX8">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.159999996</X>
+						<Y>0.319999993</Y>
+						<Z>0.200000003</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX9">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX10">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">26</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>1.8680203</Y>
+					<Z>-1.25999451</Z>
+					<R00>-1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>0</R11>
+					<R12>1</R12>
+					<R20>0</R20>
+					<R21>1</R21>
+					<R22>-0</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX11">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.159999996</X>
+						<Y>0.319999993</Y>
+						<Z>0.200000003</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX12">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX13">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">26</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>1.99601352</Y>
+					<Z>-1.97997475</Z>
+					<R00>-1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>0</R11>
+					<R12>1</R12>
+					<R20>0</R20>
+					<R21>1</R21>
+					<R22>-0</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX14">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.159999996</X>
+						<Y>0.280000001</Y>
+						<Z>0.200000003</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX15">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX16">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">26</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000006</X>
+					<Y>1.60000038</Y>
+					<Z>-2.10000038</Z>
+					<R00>-1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>-1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Handle</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">1</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX17">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.639999986</X>
+						<Y>0.0799999982</Y>
+						<Z>0.0799999982</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Sound" referent="RBX18">
+				<Properties>
+					<bool name="Looped">false</bool>
+					<string name="Name">Fire</string>
+					<float name="Pitch">1</float>
+					<bool name="PlayOnRemove">false</bool>
+					<Content name="SoundId"><null></null></Content>
+					<float name="Volume">1</float>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX19">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX20">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">26</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>2.31599689</Y>
+					<Z>1.13993263</Z>
+					<R00>-5.94854355e-005</R00>
+					<R01>-1.19805336e-005</R01>
+					<R02>-0.999999642</R02>
+					<R10>-0.923893988</R10>
+					<R11>-0.382647157</R11>
+					<R12>5.99324703e-005</R12>
+					<R20>-0.382647544</R20>
+					<R21>0.923893929</R21>
+					<R22>1.22785568e-005</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="CylinderMesh" referent="RBX21">
+				<Properties>
+					<float name="Bevel">0</float>
+					<float name="Bevel Roundness">0</float>
+					<float name="Bulge">0</float>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.400000006</X>
+						<Y>0.359999985</Y>
+						<Z>0.0879999995</Z>
+					</Vector3>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX22">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX23">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">192</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>2.03601265</Y>
+					<Z>-0.540013313</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>-1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>-1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX24">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">2</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.280000001</X>
+						<Y>0.120000005</Y>
+						<Z>0.400000006</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX25">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX26">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">26</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>2.39999413</Y>
+					<Z>-1.4999876</Z>
+					<R00>0</R00>
+					<R01>0</R01>
+					<R02>1</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>-0</R12>
+					<R20>-1</R20>
+					<R21>0</R21>
+					<R22>0</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX27">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>1.60000002</X>
+						<Y>0.0960000008</Y>
+						<Z>0.0399999991</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX28">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX29">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">26</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>2.39599562</Y>
+					<Z>0.6599617</Z>
+					<R00>0</R00>
+					<R01>0</R01>
+					<R02>-1</R02>
+					<R10>1</R10>
+					<R11>0</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>-1</R21>
+					<R22>0</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="CylinderMesh" referent="RBX30">
+				<Properties>
+					<float name="Bevel">0</float>
+					<float name="Bevel Roundness">0</float>
+					<float name="Bulge">0</float>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.400000006</X>
+						<Y>0.504000008</Y>
+						<Z>0.0799999982</Z>
+					</Vector3>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX31">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX32">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">26</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>2.18001437</Y>
+					<Z>-1.49998188</Z>
+					<R00>0</R00>
+					<R01>0</R01>
+					<R02>1</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>-0</R12>
+					<R20>-1</R20>
+					<R21>0</R21>
+					<R22>0</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX33">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>1.60000002</X>
+						<Y>0.288000017</Y>
+						<Z>0.200000003</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX34">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX35">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">26</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>2.39599323</Y>
+					<Z>1.85989761</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX36">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">2</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.0799999982</X>
+						<Y>0.24000001</Y>
+						<Z>0.120000005</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX37">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX38">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">192</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>2.3159976</Y>
+					<Z>0.0999755859</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>-0</R02>
+					<R10>0</R10>
+					<R11>0</R11>
+					<R12>1</R12>
+					<R20>0</R20>
+					<R21>-1</R21>
+					<R22>0</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="CylinderMesh" referent="RBX39">
+				<Properties>
+					<float name="Bevel">0</float>
+					<float name="Bevel Roundness">0</float>
+					<float name="Bulge">0</float>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.800000012</X>
+						<Y>0.800000012</Y>
+						<Z>0.288000017</Z>
+					</Vector3>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX40">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX41">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">192</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>2.22000265</Y>
+					<Z>-0.540013313</Z>
+					<R00>0</R00>
+					<R01>0</R01>
+					<R02>1</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>-0</R12>
+					<R20>-1</R20>
+					<R21>0</R21>
+					<R22>0</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX42">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.400000006</X>
+						<Y>0.200000003</Y>
+						<Z>0.280000001</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX43">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX44">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">26</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>2.23600221</Y>
+					<Z>1.29992485</Z>
+					<R00>0</R00>
+					<R01>0</R01>
+					<R02>-1</R02>
+					<R10>1</R10>
+					<R11>0</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>-1</R21>
+					<R22>0</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="CylinderMesh" referent="RBX45">
+				<Properties>
+					<float name="Bevel">0</float>
+					<float name="Bevel Roundness">0</float>
+					<float name="Bulge">0</float>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.400000006</X>
+						<Y>1.20000005</Y>
+						<Z>0.0960000008</Z>
+					</Vector3>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX46">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX47">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">192</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>2.23600364</Y>
+					<Z>0.259971619</Z>
+					<R00>0</R00>
+					<R01>0</R01>
+					<R02>1</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>-0</R12>
+					<R20>-1</R20>
+					<R21>0</R21>
+					<R22>0</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX48">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.639999986</X>
+						<Y>0.200000003</Y>
+						<Z>0.280000001</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX49">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX50">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">192</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>2.22000265</Y>
+					<Z>-0.220021248</Z>
+					<R00>0</R00>
+					<R01>0</R01>
+					<R02>1</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>-0</R12>
+					<R20>-1</R20>
+					<R21>0</R21>
+					<R22>0</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX51">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.400000006</X>
+						<Y>0.200000003</Y>
+						<Z>0.280000001</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX52">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX53">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">26</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>2.31599689</Y>
+					<Z>-0.540013313</Z>
+					<R00>0</R00>
+					<R01>0</R01>
+					<R02>1</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>-0</R12>
+					<R20>-1</R20>
+					<R21>0</R21>
+					<R22>0</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX54">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.400000006</X>
+						<Y>0.288000017</Y>
+						<Z>0.159999996</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX55">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX56">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">26</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>1.756024</Y>
+					<Z>-1.57998657</Z>
+					<R00>0</R00>
+					<R01>0</R01>
+					<R02>1</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>-0</R12>
+					<R20>-1</R20>
+					<R21>0</R21>
+					<R22>0</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX57">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.639999986</X>
+						<Y>0.0799999982</Y>
+						<Z>0.0799999982</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX58">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX59">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">192</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>2.3959949</Y>
+					<Z>-0.0600252151</Z>
+					<R00>0</R00>
+					<R01>0</R01>
+					<R02>1</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>-0</R12>
+					<R20>-1</R20>
+					<R21>0</R21>
+					<R22>0</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">1</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX60">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.560000002</X>
+						<Y>0.159999996</Y>
+						<Z>0.280000001</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX61">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX62">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">26</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.388000488</X>
+					<Y>2.40000105</Y>
+					<Z>-1.49998474</Z>
+					<R00>5.34682295e-005</R00>
+					<R01>1.23517841e-013</R01>
+					<R02>1</R02>
+					<R10>-4.3159529e-005</R10>
+					<R11>1</R11>
+					<R12>2.30754016e-009</R12>
+					<R20>-1</R20>
+					<R21>-4.3159529e-005</R21>
+					<R22>5.34682295e-005</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX63">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">2</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>1.60000002</X>
+						<Y>0.0799999982</Y>
+						<Z>0.0920000002</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX64">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX65">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">26</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>2.03602028</Y>
+					<Z>-1.49998188</Z>
+					<R00>0</R00>
+					<R01>0</R01>
+					<R02>1</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>-0</R12>
+					<R20>-1</R20>
+					<R21>0</R21>
+					<R22>0</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX66">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>1.60000002</X>
+						<Y>0.120000005</Y>
+						<Z>0.200000003</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX67">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX68">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">26</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.5</X>
+					<Y>2.4000001</Y>
+					<Z>-1.5</Z>
+					<R00>0</R00>
+					<R01>0</R01>
+					<R02>-1</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>1</R20>
+					<R21>0</R21>
+					<R22>0</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX69">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">2</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>1.60000002</X>
+						<Y>0.0799999982</Y>
+						<Z>0.0879999995</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX70">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX71">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">133</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>2.23600364</Y>
+					<Z>2.49988747</Z>
+					<R00>0</R00>
+					<R01>0</R01>
+					<R02>1</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>-0</R12>
+					<R20>-1</R20>
+					<R21>0</R21>
+					<R22>0</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part1</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">1</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX72">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">3</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>1.03999996</X>
+						<Y>0.400000006</Y>
+						<Z>0.400000006</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX73">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX74">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">26</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>1.5480274</Y>
+					<Z>-1.2199955</Z>
+					<R00>-1</R00>
+					<R01>6.32932279e-006</R01>
+					<R02>4.26882689e-005</R02>
+					<R10>4.26879487e-005</R10>
+					<R11>0.290206701</R11>
+					<R12>0.956963956</R12>
+					<R20>-6.33148875e-006</R20>
+					<R21>0.956963956</R21>
+					<R22>-0.29020673</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX75">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.159999996</X>
+						<Y>0.319999993</Y>
+						<Z>0.200000003</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX76">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX77">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">192</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>1.62802839</Y>
+					<Z>-2.00397682</Z>
+					<R00>1</R00>
+					<R01>2.73794358e-005</R01>
+					<R02>-3.33614153e-005</R02>
+					<R10>-3.33614153e-005</R10>
+					<R11>0.980788589</R11>
+					<R12>-0.195072323</R12>
+					<R20>2.73794358e-005</R20>
+					<R21>0.195072323</R21>
+					<R22>0.980788589</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX78">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.159999996</X>
+						<Y>0.280000001</Y>
+						<Z>0.319999993</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX79">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX80">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">192</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000006</X>
+					<Y>2.03999996</Y>
+					<Z>-2.8499999</Z>
+					<R00>-1</R00>
+					<R01>4.22892981e-006</R01>
+					<R02>4.29479442e-005</R02>
+					<R10>4.29477659e-005</R10>
+					<R11>0.195082352</R11>
+					<R12>0.98078686</R12>
+					<R20>-4.23070696e-006</R20>
+					<R21>0.98078686</R21>
+					<R22>-0.195082352</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX81">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.159999996</X>
+						<Y>1.36000013</Y>
+						<Z>0.319999993</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX82">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX83">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">192</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>1.34803402</Y>
+					<Z>-2.05997276</Z>
+					<R00>1</R00>
+					<R01>2.73794358e-005</R01>
+					<R02>-3.33614153e-005</R02>
+					<R10>-3.33614153e-005</R10>
+					<R11>0.980788589</R11>
+					<R12>-0.195072323</R12>
+					<R20>2.73794358e-005</R20>
+					<R21>0.195072323</R21>
+					<R22>0.980788589</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX84">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.159999996</X>
+						<Y>0.280000001</Y>
+						<Z>0.319999993</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX85">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX86">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">26</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>1.38803256</Y>
+					<Z>-1.16399574</Z>
+					<R00>-1</R00>
+					<R01>8.41676137e-006</R01>
+					<R02>4.23267156e-005</R02>
+					<R10>4.23263664e-005</R10>
+					<R11>0.382615</R11>
+					<R12>0.923907876</R12>
+					<R20>-8.41852489e-006</R20>
+					<R21>0.923907936</R21>
+					<R22>-0.38261494</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX87">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.159999996</X>
+						<Y>0.319999993</Y>
+						<Z>0.200000003</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX88">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX89">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">192</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>2.27200437</Y>
+					<Z>-3.01997852</Z>
+					<R00>1</R00>
+					<R01>4.2329043e-006</R01>
+					<R02>-4.29493448e-005</R02>
+					<R10>-4.29495267e-005</R10>
+					<R11>0.195173278</R11>
+					<R12>-0.9807688</R12>
+					<R20>4.23106394e-006</R20>
+					<R21>0.9807688</R21>
+					<R22>0.195173278</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX90">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">2</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.159999996</X>
+						<Y>1.15999997</Y>
+						<Z>0.319999993</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX91">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX92">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">192</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>1.83602118</Y>
+					<Z>-1.9799757</Z>
+					<R00>-1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>0</R11>
+					<R12>1</R12>
+					<R20>0</R20>
+					<R21>1</R21>
+					<R22>-0</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX93">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.159999996</X>
+						<Y>0.280000001</Y>
+						<Z>0.200000003</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX94">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX95">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">26</int>
+				<CoordinateFrame name="CFrame">
+					<X>0.444000244</X>
+					<Y>1.30803454</Y>
+					<Z>-1.11599731</Z>
+					<R00>-1</R00>
+					<R01>1.25278621e-005</R01>
+					<R02>4.12995469e-005</R02>
+					<R10>4.12994632e-005</R10>
+					<R11>0.555567801</R11>
+					<R12>0.831471205</R12>
+					<R20>-1.25281395e-005</R20>
+					<R21>0.831471264</R21>
+					<R22>-0.555567801</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Part</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX96">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><null></null></Content>
+					<token name="MeshType">6</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>0.159999996</X>
+						<Y>0.319999993</Y>
+						<Z>0.200000003</Z>
+					</Vector3>
+					<Content name="TextureId"><null></null></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX97">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Melee</string>
+					<ProtectedString name="Source">local meleevalue = script.Parent.Parent.LocalMelee.melee;
+ball = script.Parent
+
+function onHit(hit)
+&#9;if meleevalue.Value == false then
+&#9;&#9;return;
+&#9;end
+
+&#9;if hit.Parent == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;local human = hit.Parent:FindFirstChild(&quot;Humanoid&quot;);
+
+&#9;if human == nil then
+&#9;&#9;return;
+&#9;end
+
+&#9;human:TakeDamage(100);
+&#9;taghumanoid(human)
+&#9;wait(2)
+&#9;untagHumanoid(human)
+end
+
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid 
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end 
+
+script.Parent.Touched:connect(onHit);</ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Sound" referent="RBX98">
+			<Properties>
+				<bool name="Looped">false</bool>
+				<string name="Name">Explosion</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">true</bool>
+				<Content name="SoundId"><url>rbxasset://sounds/collide.wav</url></Content>
+				<float name="Volume">1</float>
+			</Properties>
+		</Item>
+		<Item class="Sound" referent="RBX99">
+			<Properties>
+				<bool name="Looped">false</bool>
+				<string name="Name">Melee</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">true</bool>
+				<Content name="SoundId"><null></null></Content>
+				<float name="Volume">1</float>
+			</Properties>
+		</Item>
+		<Item class="Sound" referent="RBX100">
+			<Properties>
+				<bool name="Looped">false</bool>
+				<string name="Name">Throw</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">true</bool>
+				<Content name="SoundId"><null></null></Content>
+				<float name="Volume">1</float>
+			</Properties>
+		</Item>
+		<Item class="SpecialMesh" referent="RBX101">
+			<Properties>
+				<token name="LODX">2</token>
+				<token name="LODY">2</token>
+				<Content name="MeshId"><url>http://www.roblox.com/asset/?id=2697549</url></Content>
+				<token name="MeshType">5</token>
+				<string name="Name">Bullet</string>
+				<Vector3 name="Offset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="Scale">
+					<X>1</X>
+					<Y>1</Y>
+					<Z>1</Z>
+				</Vector3>
+				<Content name="TextureId"><url>http://Sww.roblox.com/asset/?id=2697544</url></Content>
+				<Vector3 name="VertexColor">
+					<X>1</X>
+					<Y>1</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX102">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Crouch</string>
+				<ProtectedString name="Source">Tool = script.Parent;
+local arms = nil
+local torso = nil
+local welds = {}
+local h = nil
+local daves = {}
+
+function Changed(value)
+&#9;if value == 1 then
+&#9;&#9;arms = {Tool.Parent:FindFirstChild(&quot;Left Leg&quot;), Tool.Parent:FindFirstChild(&quot;Right Leg&quot;)}
+&#9;&#9;torso = Tool.Parent:FindFirstChild(&quot;Torso&quot;)
+                human = Tool.Parent:FindFirstChild(&quot;Humanoid&quot;)
+&#9;&#9;if arms ~= nil and torso ~= nil and human ~= nil then
+&#9;&#9;&#9;local sh = {torso:FindFirstChild(&quot;Left Hip&quot;), torso:FindFirstChild(&quot;Right Hip&quot;)}
+&#9;&#9;&#9;if sh ~= nil then
+&#9;&#9;&#9;&#9;local yes = true
+&#9;&#9;&#9;&#9;if yes then
+&#9;&#9;&#9;&#9;&#9;yes = false
+&#9;&#9;&#9;&#9;&#9;sh[1].Part1 = nil
+&#9;&#9;&#9;&#9;&#9;sh[2].Part1 = nil
+&#9;&#9;&#9;&#9;&#9;local weld1 = Instance.new(&quot;Weld&quot;)
+&#9;&#9;&#9;&#9;&#9;weld1.Part0 = torso
+&#9;&#9;&#9;&#9;&#9;weld1.Parent = torso
+&#9;&#9;&#9;&#9;&#9;weld1.Part1 = arms[1]
+&#9;&#9;&#9;&#9;&#9;weld1.C1 = CFrame.new(0.5, 0.9, 0.5) * CFrame.fromEulerAnglesXYZ(math.rad(20), 0, math.rad(0))
+&#9;&#9;&#9;&#9;&#9;welds[1] = weld1
+&#9;&#9;&#9;&#9;&#9;local weld2 = Instance.new(&quot;Weld&quot;)
+&#9;&#9;&#9;&#9;&#9;weld2.Part0 = torso
+&#9;&#9;&#9;&#9;&#9;weld2.Parent = torso
+&#9;&#9;&#9;&#9;&#9;weld2.Part1 = arms[2]
+&#9;&#9;&#9;&#9;&#9;weld2.C1 = CFrame.new(-0.5, 0.9, 0.5) * CFrame.fromEulerAnglesXYZ(math.rad(20), math.rad(-0), 0)
+&#9;&#9;&#9;&#9;&#9;welds[2] = weld2
+&#9;&#9;&#9;&#9;&#9;human.WalkSpeed = 10
+                                        h = human
+                                        arms[1].Name = &quot;Dave&quot;
+                                        arms[1].CanCollide = true
+                                        arms[2].Name = &quot;Dave&quot;
+                                        arms[2].CanCollide = true
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;elseif value == 0 then
+&#9;&#9;if arms ~= nil and torso ~= nil then
+&#9;&#9;&#9;local sh = {torso:FindFirstChild(&quot;Left Hip&quot;), torso:FindFirstChild(&quot;Right Hip&quot;)}
+&#9;&#9;&#9;if sh ~= nil then
+&#9;&#9;&#9;&#9;local yes = true
+&#9;&#9;&#9;&#9;if yes then
+&#9;&#9;&#9;&#9;&#9;yes = false
+&#9;&#9;&#9;&#9;&#9;sh[1].Part1 = arms[1]
+&#9;&#9;&#9;&#9;&#9;sh[2].Part1 = arms[2]
+&#9;&#9;&#9;&#9;&#9;welds[1].Parent = nil
+&#9;&#9;&#9;&#9;&#9;welds[2].Parent = nil
+&#9;&#9;&#9;&#9;&#9;arms[1].Name = &quot;Right Leg&quot;
+                                        arms[2].Name = &quot;Left Leg&quot;
+                                        arms[1].CanCollide = false
+                                        arms[2].CanCollide = false
+&#9;&#9;&#9;&#9;&#9;if Tool.Sight.Value == 0 then
+&#9;&#9;&#9;&#9;&#9;&#9;human.WalkSpeed = 16
+&#9;&#9;&#9;&#9;&#9;elseif Tool.Sight.Value == 1 then
+&#9;&#9;&#9;&#9;&#9;&#9;human.WalkSpeed = 10
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end 
+end 
+script.Parent:FindFirstChild(&quot;IsCrouched&quot;).Changed:connect(Changed)</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="SpecialMesh" referent="RBX103">
+			<Properties>
+				<token name="LODX">2</token>
+				<token name="LODY">2</token>
+				<Content name="MeshId"><url>http://www.roblox.com/asset/?id=1376459</url></Content>
+				<token name="MeshType">5</token>
+				<string name="Name">Grenade</string>
+				<Vector3 name="Offset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="Scale">
+					<X>0.899999976</X>
+					<Y>0.899999976</Y>
+					<Z>0.899999976</Z>
+				</Vector3>
+				<Content name="TextureId"><url>http://ww2.roblox.com/asset/?id=11098067</url></Content>
+				<Vector3 name="VertexColor">
+					<X>1</X>
+					<Y>1</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX104">
+			<Properties>
+				<bool name="Disabled">true</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">GrenadeScript</string>
+				<ProtectedString name="Source">function explode()
+&#9;part = { 8, 10, 14, 12} 
+&#9;local parts = part[math.random(1,#part)]
+&#9;local b = script.Thrust:clone()
+&#9;explosion = Instance.new(&quot;Explosion&quot;)
+&#9;explosion.Position = script.Parent.Position
+&#9;explosion.BlastRadius=15
+&#9;explosion.BlastPressure=0
+&#9;
+
+&#9;local creator = script.Parent:findFirstChild(&quot;creator&quot;)
+&#9;if creator ~= nil then
+&#9;&#9;explosion.Hit:connect(function(part, distance)  onPlayerBlownUp(part, distance, creator) end)
+&#9;end
+&#9;script.Parent.Explosion:play()
+&#9;explosion.Parent = game.Workspace
+&#9;local p = game.Players:GetChildren()
+&#9;for i = 1,#p do
+&#9;&#9;local m = (explosion.Position - p[i].Character.Torso.Position).magnitude
+&#9;&#9;if m &lt; 30 and m &gt; 20 then
+&#9;&#9;&#9;if p[i].TeamColor ~= game.Players:findFirstChild(creator.Value.Name).TeamColor then
+&#9;&#9;&#9;&#9;if p[i].Character.Humanoid.Health ~= nil then
+&#9;&#9;&#9;&#9;&#9;p[i].Character.Humanoid.Health = p[i].Character.Humanoid.Health - 20
+&#9;&#9;&#9;&#9;&#9;b.Parent = p[i].Character.Torso 
+&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;return
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;elseif p[i].TeamColor == game.Players:findFirstChild(creator.Value.Name).TeamColor then
+&#9;&#9;&#9;&#9;print(&quot;Friendly&quot;)
+&#9;&#9;&#9;end
+&#9;&#9;elseif m &lt; 20 and m &gt; 10 then
+&#9;&#9;&#9;if p[i].TeamColor ~= game.Players:findFirstChild(creator.Value.Name).TeamColor then
+&#9;&#9;&#9;&#9;if p[i].Character.Humanoid.Health ~= nil then
+&#9;&#9;&#9;&#9;&#9;p[i].Character.Humanoid.Health = p[i].Character.Humanoid.Health - 50
+&#9;&#9;&#9;&#9;&#9;b.Parent = p[i].Character.Torso 
+&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;return
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;elseif p[i].TeamColor == game.Players:findFirstChild(creator.Value.Name).TeamColor then
+&#9;&#9;&#9;&#9;print(&quot;Friendly&quot;)
+&#9;&#9;&#9;end
+&#9;&#9;elseif m &lt; 10 and m &gt; 0 then
+&#9;&#9;&#9;if p[i].TeamColor ~= game.Players:findFirstChild(creator.Value.Name).TeamColor then
+&#9;&#9;&#9;&#9;if p[i].Character.Humanoid.Health ~= nil then
+&#9;&#9;&#9;&#9;&#9;p[i].Character.Humanoid.Health = p[i].Character.Humanoid.Health - 100
+&#9;&#9;&#9;&#9;&#9;b.Parent = p[i].Character.Torso 
+&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;return
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;elseif p[i].TeamColor == game.Players:findFirstChild(creator.Value.Name).TeamColor then
+&#9;&#9;&#9;&#9;print(&quot;Friendly&quot;)
+&#9;&#9;&#9;end
+&#9;&#9;elseif m &lt;= 0 then
+&#9;&#9;&#9;return
+&#9;&#9;end
+&#9;end
+&#9;wait(0.1)
+&#9;for i = 1,parts do
+&#9;&#9;local d = Instance.new(&quot;Part&quot;)
+&#9;&#9;d.Name = &quot;Frag&quot; 
+&#9;&#9;d.Parent = game.Workspace
+&#9;&#9;d.Position = explosion.Position + Vector3.new(math.random(-5, 5),math.random(-5,5),math.random(-5,5))
+&#9;&#9;d.Velocity = Vector3.new(math.random(-100, 100),math.random(-100,100),math.random(-100,100))&#9;
+&#9;&#9;d.Shape = 0
+&#9;&#9;d.BrickColor = BrickColor.new(26)
+&#9;&#9;d.Size = Vector3.new(1,1,1) 
+&#9;end
+&#9;script.Parent:remove()
+&#9;wait(3)
+&#9;cleanup()
+&#9;b:Remove()
+end
+
+function cleanup()
+&#9;local w = game.Workspace:GetChildren()
+&#9;for i = 1,#w do
+&#9;&#9;if w[i].Name == &quot;Frag&quot; then
+&#9;&#9;&#9;w[i]:Remove()
+&#9;&#9;end
+&#9;end
+end
+
+function onPlayerBlownUp(part, distance, creator)
+&#9;if part.Name == &quot;Head&quot; then
+&#9;&#9;local humanoid = part.Parent.Humanoid
+&#9;&#9;tagHumanoid(humanoid, creator)
+&#9;end
+end
+
+function tagHumanoid(humanoid, creator)
+&#9;if creator ~= nil then
+&#9;&#9;local new_tag = creator:clone()
+&#9;&#9;new_tag.Parent = humanoid
+&#9;end
+end
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end
+
+function onTouched(hit)
+&#9;humanoid = hit.Parent:findFirstChild(&quot;Humanoid&quot;)
+&#9;if humanoid~=nil then
+&#9;&#9;explode()
+&#9;elseif hit.Name == &quot;Projectile&quot; then
+&#9;&#9;explode()
+&#9;end
+end
+connection = script.Parent.Touched:connect(onTouched)
+
+wait(3)
+
+explode()
+
+</ProtectedString>
+			</Properties>
+			<Item class="BodyAngularVelocity" referent="RBX105">
+				<Properties>
+					<string name="Name">Gyro</string>
+					<float name="P">1250</float>
+					<Vector3 name="angularvelocity">
+						<X>4</X>
+						<Y>3</Y>
+						<Z>4</Z>
+					</Vector3>
+					<Vector3 name="maxTorque">
+						<X>1.00000003e+032</X>
+						<Y>1.00000003e+032</Y>
+						<Z>1.00000003e+032</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="BodyThrust" referent="RBX106">
+				<Properties>
+					<string name="Name">Thrust</string>
+					<Vector3 name="force">
+						<X>0</X>
+						<Y>5</Y>
+						<Z>5</Z>
+					</Vector3>
+					<Vector3 name="location">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="IntValue" referent="RBX107">
+			<Properties>
+				<string name="Name">IsCrouched</string>
+				<int name="Value">0</int>
+			</Properties>
+		</Item>
+		<Item class="IntValue" referent="RBX108">
+			<Properties>
+				<string name="Name">IsRunning</string>
+				<int name="Value">0</int>
+			</Properties>
+		</Item>
+		<Item class="IntValue" referent="RBX109">
+			<Properties>
+				<string name="Name">Sight</string>
+				<int name="Value">0</int>
+			</Properties>
+		</Item>
+		<Item class="IntValue" referent="RBX110">
+			<Properties>
+				<string name="Name">Spread</string>
+				<int name="Value">35</int>
+			</Properties>
+		</Item>
+		<Item class="ObjectValue" referent="RBX111">
+			<Properties>
+				<string name="Name">Teamcolor</string>
+				<Ref name="Value">null</Ref>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX112">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Weld</string>
+				<ProtectedString name="Source">local prev 
+local parts = script.Parent:GetChildren() 
+for i = 1,#parts do 
+if (parts[i].className == &quot;Part&quot;) then 
+if (prev ~= nil)then 
+local weld = Instance.new(&quot;Weld&quot;) 
+weld.Part0 = prev 
+weld.Part1 = parts[i] 
+weld.C0 = prev.CFrame:inverse() 
+weld.C1 = parts[i].CFrame:inverse() 
+weld.Parent = prev 
+parts[i].Anchored = false
+end 
+prev = parts[i] 
+end 
+end 
+wait(3) </ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX113">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">WeldArm</string>
+				<ProtectedString name="Source">Tool = script.Parent;
+local arms = nil
+local torso = nil
+local welds = {}
+
+function Equip(mouse)
+wait(0.01)
+arms = {Tool.Parent:FindFirstChild(&quot;Left Arm&quot;), Tool.Parent:FindFirstChild(&quot;Right Arm&quot;)}
+torso = Tool.Parent:FindFirstChild(&quot;Torso&quot;)
+if arms ~= nil and torso ~= nil then
+local sh = {torso:FindFirstChild(&quot;Left Shoulder&quot;), torso:FindFirstChild(&quot;Right Shoulder&quot;)}
+if sh ~= nil then
+local yes = true
+if yes then
+yes = false
+sh[1].Part1 = nil
+sh[2].Part1 = nil
+local weld1 = Instance.new(&quot;Weld&quot;)
+weld1.Part0 = torso
+weld1.Parent = torso
+weld1.Part1 = arms[1]
+weld1.C1 = CFrame.new(-0.249, 1.35, 0.6) * CFrame.fromEulerAnglesXYZ(math.rad(290), 0, math.rad(-90))
+---------------------------------y---------x-------z
+welds[1] = weld1
+local weld2 = Instance.new(&quot;Weld&quot;)
+weld2.Part0 = torso
+weld2.Parent = torso
+weld2.Part1 = arms[2]
+weld2.C1 = CFrame.new(-1, -0.2, 0.35) * CFrame.fromEulerAnglesXYZ(math.rad(-90), math.rad(-15), 0)
+---------------------------------y----z-----x
+welds[2] = weld2
+end
+else
+print(&quot;sh&quot;)
+end
+else
+print(&quot;arms&quot;)
+end
+end
+
+function Unequip(mouse)
+if arms ~= nil and torso ~= nil then
+local sh = {torso:FindFirstChild(&quot;Left Shoulder&quot;), torso:FindFirstChild(&quot;Right Shoulder&quot;)}
+if sh ~= nil then
+local yes = true
+if yes then
+yes = false
+sh[1].Part1 = arms[1]
+sh[2].Part1 = arms[2]
+welds[1].Parent = nil
+welds[2].Parent = nil
+end
+else
+print(&quot;sh&quot;)
+end
+else
+print(&quot;arms&quot;)
+end
+end
+Tool.Equipped:connect(Equip)
+Tool.Unequipped:connect(Unequip)
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="LocalScript" referent="RBX114">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">CheckTeams</string>
+				<ProtectedString name="Source">bin = script.Parent
+normel = &quot;http://www.roblox.com/asset/?id=7419350&quot;
+friendly = &quot;http://www.roblox.com/asset/?id=7419364&quot;
+enemy = &quot;http://www.roblox.com/asset/?id=7419379&quot;
+function Run(mouse)
+&#9;mouse.Icon = normel
+&#9;local hit = mouse.Target
+&#9;if (hit == nil) then return end
+        h = hit.Parent:FindFirstChild(&quot;Humanoid&quot;)
+        if h ~= nil then
+        torso = hit.Parent.Torso
+        if torso ~= nil then
+        if h.Health &gt; 0 then
+&#9;if (torso.BrickColor == bin.Parent.Torso.BrickColor) then
+        mouse.Icon = friendly
+        elseif torso.BrickColor ~= bin.Parent.Torso.BrickColor then
+        mouse.Icon = enemy
+        end
+        end
+        end
+        
+&#9;end
+end
+
+
+
+
+
+
+
+function on(mouse)
+        while true do
+        wait()
+&#9;Run(mouse)
+        end
+end
+
+
+
+script.Parent.Equipped:connect(on)
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="LocalScript" referent="RBX115">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Local Gui</string>
+				<ProtectedString name="Source">local Tool = script.Parent;
+local arms = nil
+local torso = nil
+local welds = {}
+local nadeloaded = true
+local running = false
+local sight = Tool.Sight
+local run = false
+
+function stick(x, y)
+&#9;weld = Instance.new(&quot;Weld&quot;) 
+&#9;weld.Part0 = x
+&#9;weld.Part1 = y
+&#9;local HitPos = x.Position
+&#9;local CJ = CFrame.new(HitPos) 
+&#9;local C0 = x.CFrame:inverse() *CJ 
+&#9;local C1 = y.CFrame:inverse() * CJ 
+&#9;weld.C0 = C0 
+&#9;weld.C1 = C1 
+&#9;weld.Parent = x
+end
+
+
+enabled = true
+local sp = Tool.Spread
+
+function BlowBack()
+&#9;Tool.GripPos = Tool.GripPos - Vector3.new(0,0,0.3)
+&#9;if Tool.Parent:findFirstChild(&quot;DoubleTap&quot;) ~= nil then
+&#9;&#9;wait(0.05)
+&#9;&#9;Tool.GripPos = Tool.GripPos + Vector3.new(0,0,0.3)
+&#9;elseif Tool.Parent:findFirstChild(&quot;DoubleTap&quot;) == nil then
+&#9;&#9;wait(0.1)
+&#9;&#9;Tool.GripPos = Tool.GripPos + Vector3.new(0,0,0.3)
+&#9;end
+end
+&#9;
+
+function Sighton()
+&#9;if sight.Value == 0 then
+&#9;&#9;Tool.GripRight = Vector3.new(1,0,-0.2)
+&#9;&#9;Tool.GripPos = Tool.GripPos + Vector3.new(0.2,-0.2,0)
+&#9;&#9;sp.Value = 15
+&#9;&#9;Tool.Parent.Humanoid.WalkSpeed = 10
+&#9;&#9;sight.Value = 1
+&#9;elseif sight.Value ~= 0 then
+&#9;&#9;Tool.GripRight = Vector3.new(1,0,0)
+&#9;&#9;Tool.GripPos = Tool.GripPos - Vector3.new(0.2,-0.2,0)
+&#9;&#9;if Tool.IsCrouched.Value == 0 then
+&#9;&#9;&#9;sp.Value = 35
+&#9;&#9;&#9;Tool.Parent.Humanoid.WalkSpeed = 16
+&#9;&#9;&#9;sight.Value = 0
+&#9;&#9;elseif Tool.IsCrouched.Value ~= 0 then
+&#9;&#9;&#9;sp.Value = 35
+&#9;&#9;&#9;Tool.Parent.Humanoid.WalkSpeed = 10
+&#9;&#9;&#9;sight.Value = 0
+&#9;&#9;end
+&#9;end
+end
+
+
+function shoot(v)
+&#9;for i = 1,1 do
+&#9;&#9;local t = Tool.Teamcolor:clone()
+&#9;&#9;local team = t:clone()
+&#9;&#9;local ob = Instance.new(&quot;ObjectValue&quot;)
+&#9;&#9;ob.Name = &quot;Break&quot;
+&#9;&#9;local tag = Instance.new(&quot;ObjectValue&quot;)
+&#9;&#9;tag.Name = &quot;creator&quot;
+&#9;&#9;tag.Value = game.Players:findFirstChild(Tool.Parent.Name)
+&#9;&#9;local Pos = Vector3.new(math.random(-sp.Value,sp.Value),math.random(-sp.Value,sp.Value),math.random(-sp.Value,sp.Value))
+&#9;&#9;Tool.Part1.Transparency = 0.4
+&#9;&#9;script.Parent.Handle.Fire:play()
+&#9;&#9;local dir = v - script.Parent[&quot;Part1&quot;].Position
+&#9;&#9;dir = computeDirection(dir)
+&#9;&#9;local pos = script.Parent[&quot;Part1&quot;].Position + (dir * 8)
+&#9;&#9;local p = Instance.new(&quot;Part&quot;)
+&#9;&#9;p.Name = &quot;Projectile&quot;
+&#9;&#9;p.CFrame = CFrame.new(pos, pos + dir)
+&#9;&#9;p.BrickColor = BrickColor.new(24)
+&#9;&#9;p.Reflectance = 0
+&#9;&#9;p.Velocity = (script.Parent.Parent[&quot;Head&quot;].Position - v).unit * -1300 + Pos
+&#9;&#9;p.Size = Vector3.new(1, 1, 1)
+&#9;&#9;p.Shape = 0
+&#9;&#9;ob.Parent = p
+&#9;&#9;local mesh = script.Parent.Bullet:clone()
+&#9;&#9;mesh.Parent = p
+&#9;&#9;local upforce = Instance.new(&quot;BodyForce&quot;)
+&#9;&#9;upforce.force = Vector3.new(0, p:GetMass() * 200, 0)
+&#9;&#9;upforce.Parent = p
+&#9;&#9;local s = script[&quot;Damage&quot;]:Clone()
+&#9;&#9;s.Disabled = false
+&#9;&#9;s.Parent = p
+&#9;&#9;local r = script[&quot;Removal&quot;]:clone()
+&#9;&#9;r.Disabled = false
+&#9;&#9;r.Parent = p
+&#9;&#9;tag.Parent = p
+&#9;&#9;team.Parent = p
+&#9;&#9;if game.Players:findFirstChild(Tool.Parent.Name).TeamColor == game.Teams.Spetsnaz.TeamColor then
+&#9;&#9;&#9;team.Value = game.Teams.Spetsnaz
+&#9;&#9;else
+&#9;&#9;&#9;team.Value = game.Teams[&quot;S.A.S&quot;]
+&#9;&#9;end
+&#9;&#9;p.Parent = game.Workspace
+&#9;&#9;BlowBack()
+&#9;&#9;Tool.Part1.Transparency = 1
+&#9;end
+end
+
+function Run(speed)
+&#9;if speed &gt; 0 then
+&#9;&#9;if sight.Value == 0 then
+&#9;&#9;&#9;sp.Value = 65
+&#9;&#9;elseif sight.Value ~= 0 then
+&#9;&#9;&#9;sp.Value = 45
+&#9;&#9;end
+&#9;else
+&#9;&#9;if sight.Value == 0 then
+&#9;&#9;&#9;sp.Value = 35
+&#9;&#9;elseif sight.Value ~= 0 then
+&#9;&#9;&#9;sp.Value = 15
+&#9;&#9;end
+&#9;end
+end
+&#9;
+
+function onButton1Down(mouse)
+&#9;enabled = true
+&#9;while enabled do
+&#9;&#9;shoot(Tool.Parent.Humanoid.TargetPoint)
+&#9;&#9;wait()
+&#9;end
+end
+
+function onButton1Up(mouse)
+&#9;enabled = false
+&#9;firing = false
+&#9;objs = script.Parent.Parent:children()
+&#9;for countb = 1, #objs do
+&#9;&#9;if (objs[countb].Name == &quot;SHELL&quot;) then
+&#9;&#9;&#9;objs[countb]:remove()
+&#9;&#9;end
+&#9;end
+end
+
+function firenade2(mouse_pos)
+&#9;local Object = Instance.new(&quot;ObjectValue&quot;)
+&#9;Object.Name = &quot;Shatterable&quot;
+&#9;local Exp = Tool.Explosion:clone()
+&#9;local mesh = Tool.Grenade:clone()
+&#9;VELOCITY = 90
+&#9;nadeloaded=false
+&#9;local head=game.Workspace:findFirstChild(script.Parent.Parent.Name).Head
+&#9;if head == nil then return end
+&#9;
+&#9;local dir = mouse_pos - head.Position
+&#9;dir = computeDirection(dir)
+
+&#9;local launch = head.Position + 5 * dir
+
+&#9;local delta = mouse_pos - launch
+&#9;
+&#9;local dy = delta.y
+&#9;
+&#9;local new_delta = Vector3.new(delta.x, 0, delta.z)
+&#9;delta = new_delta
+
+&#9;local dx = delta.magnitude
+&#9;local unit_delta = delta.unit
+
+&#9;local g = (-9.81 * 20)
+
+&#9;local theta = computeLaunchAngle(dx, dy, g)
+
+&#9;local vy = math.sin(theta)
+&#9;local xz = math.cos(theta)
+&#9;local vx = unit_delta.x * xz
+&#9;local vz = unit_delta.z * xz
+
+&#9;local missile = Instance.new(&quot;Part&quot;)
+&#9;missile.Size = Vector3.new(1,1,1)
+&#9;missile.BrickColor=BrickColor.new(141)
+&#9;missile.Shape = 0
+&#9;missile.BottomSurface = 0
+&#9;missile.TopSurface = 0
+&#9;missile.Name = &quot;Grenade&quot;
+&#9;missile.Elasticity = .2
+&#9;missile.Reflectance = 0
+&#9;missile.Friction = .8        
+&#9;missile.Position = launch
+&#9;missile.Velocity = Vector3.new(vx,vy,vz) * VELOCITY
+&#9;mesh.Parent = missile
+&#9;Exp.Parent = missile
+&#9;Object.Parent = missile
+
+&#9;script.FlashbangScript:clone().Parent=missile
+&#9;missile.FlashbangScript.Disabled = false
+
+&#9;local creator_tag = Instance.new(&quot;ObjectValue&quot;)
+&#9;creator_tag.Value = game.Players.LocalPlayer
+&#9;creator_tag.Name = &quot;creator&quot;
+&#9;creator_tag.Parent = missile
+&#9;
+&#9;missile.Parent = game.Workspace
+
+&#9;wait(5)
+&#9;nadeloaded=true
+
+end
+
+function firenade(mouse_pos)
+&#9;local Object = Instance.new(&quot;ObjectValue&quot;)
+&#9;Object.Name = &quot;Shatterable&quot;
+&#9;local Exp = Tool.Explosion:clone()
+&#9;local mesh = Tool.Grenade:clone()
+&#9;VELOCITY = 90
+&#9;nadeloaded=false
+&#9;local head=game.Workspace:findFirstChild(script.Parent.Parent.Name).Head
+&#9;if head == nil then return end
+&#9;
+&#9;local dir = mouse_pos - head.Position
+&#9;dir = computeDirection(dir)
+
+&#9;local launch = head.Position + 5 * dir
+
+&#9;local delta = mouse_pos - launch
+&#9;
+&#9;local dy = delta.y
+&#9;
+&#9;local new_delta = Vector3.new(delta.x, 0, delta.z)
+&#9;delta = new_delta
+
+&#9;local dx = delta.magnitude
+&#9;local unit_delta = delta.unit
+
+&#9;local g = (-9.81 * 20)
+
+&#9;local theta = computeLaunchAngle(dx, dy, g)
+
+&#9;local vy = math.sin(theta)
+&#9;local xz = math.cos(theta)
+&#9;local vx = unit_delta.x * xz
+&#9;local vz = unit_delta.z * xz
+
+&#9;local missile = Instance.new(&quot;Part&quot;)
+&#9;missile.Size = Vector3.new(1,1,1)
+&#9;missile.BrickColor=BrickColor.new(141)
+&#9;missile.Shape = 0
+&#9;missile.BottomSurface = 0
+&#9;missile.TopSurface = 0
+&#9;missile.Name = &quot;Grenade&quot;
+&#9;missile.Elasticity = .2
+&#9;missile.Reflectance = 0
+&#9;missile.Friction = .8        
+&#9;missile.Position = launch
+&#9;missile.Velocity = Vector3.new(vx,vy,vz) * VELOCITY
+&#9;mesh.Parent = missile
+&#9;Exp.Parent = missile
+&#9;Object.Parent = missile
+
+&#9;script.Parent.GrenadeScript:clone().Parent = missile
+&#9;missile.GrenadeScript.Disabled = false
+
+&#9;local creator_tag = Instance.new(&quot;ObjectValue&quot;)
+&#9;creator_tag.Value = game.Players.LocalPlayer
+&#9;creator_tag.Name = &quot;creator&quot;
+&#9;creator_tag.Parent = missile
+&#9;
+&#9;missile.Parent = game.Workspace
+
+&#9;wait(5)
+&#9;nadeloaded=true
+
+end
+
+function computeLaunchAngle(dx,dy,grav)
+&#9;local g = math.abs(grav)
+&#9;local inRoot = (VELOCITY^4) - (g * ((g*dx*dx) + (2*dy*(VELOCITY^2))))
+&#9;if inRoot &lt;= 0 then
+&#9;&#9;return .25 * math.pi
+&#9;end
+&#9;local root = math.sqrt(inRoot)
+&#9;local inATan1 = ((VELOCITY^2) + root) / (g*dx)
+
+&#9;local inATan2 = ((VELOCITY^2) - root) / (g*dx)
+&#9;local answer1 = math.atan(inATan1)
+&#9;local answer2 = math.atan(inATan2)
+&#9;if answer1 &lt; answer2 then return answer1 end
+&#9;return answer2
+end
+
+function computeDirection(vec)
+&#9;local lenSquared = vec.magnitude * vec.magnitude
+&#9;local invSqrt = 1 / math.sqrt(lenSquared)
+&#9;return Vector3.new(vec.x * invSqrt, vec.y * invSqrt, vec.z * invSqrt)
+end
+&#9;
+
+function Sprint()
+&#9;run = true
+&#9;Tool.Parent.Humanoid.WalkSpeed =  30
+&#9;Tool.GripRight = Vector3.new(1,0,0)
+&#9;if Tool.IsCrouched.Value == 1 then
+&#9;&#9;Tool.IsCrouched.Value = 0
+&#9;&#9;if sight.Value == 1 then
+&#9;&#9;&#9;Tool.GripPos = Tool.GripPos - Vector3.new(0.2,-0.2,0)
+&#9;&#9;&#9;sight.Value = 0
+&#9;&#9;elseif sight.Value ~= 1 then
+&#9;&#9;&#9;print(&quot;noSights&quot;)
+&#9;&#9;end
+&#9;elseif Tool.IsCrouched.Value == 0 then
+&#9;&#9;print(&quot;notCrouched&quot;)
+&#9;&#9;if sight.Value == 1 then
+&#9;&#9;&#9;Tool.GripPos = Tool.GripPos - Vector3.new(0.2,-0.2,0)
+&#9;&#9;elseif sight.Value ~= 1 then
+&#9;&#9;&#9;print(&quot;noSights&quot;)
+&#9;&#9;end
+&#9;end
+&#9;if Tool.Parent:findFirstChild(&quot;ExtremeConditioning&quot;) ~= nil then
+&#9;&#9;wait(10)
+&#9;&#9;Tool.Parent.Humanoid.WalkSpeed = 16
+&#9;&#9;Tool.GripRight = Vector3.new(1,0,0)
+&#9;&#9;wait(5)
+&#9;&#9;run = false
+&#9;elseif Tool.Parent:findFirstChild(&quot;ExtremeConditioning&quot;) == nil then
+&#9;&#9;wait(5)
+&#9;&#9;Tool.Parent.Humanoid.WalkSpeed = 16
+&#9;&#9;Tool.GripRight = Vector3.new(1,0,0)
+&#9;&#9;wait(5)
+&#9;&#9;run = false
+&#9;end
+end
+
+
+function pressedKey(key)
+&#9;local character = Tool.Parent
+&#9;local humanoid = character.Humanoid
+&#9;local targetPos = humanoid.TargetPoint
+&#9;local crouched = Tool:FindFirstChild(&quot;IsCrouched&quot;)
+&#9;key:lower()
+&#9;if key == &quot;c&quot; then
+&#9;&#9;if crouched.Value == 0 then
+&#9;&#9;&#9;crouched.Value = 1
+&#9;&#9;elseif crouched.Value == 1 then
+&#9;&#9;&#9;crouched.Value = 0
+&#9;&#9;end
+&#9;elseif key == &quot;f&quot; then
+&#9;&#9;if nadeloaded == true then
+&#9;&#9;&#9;nadeloaded = false
+&#9;&#9;&#9;script.Parent.Throw:play()
+&#9;&#9;&#9;firenade(targetPos)
+&#9;&#9;&#9;wait(5)
+&#9;&#9;&#9;nadeloaded = true
+&#9;&#9;elseif nadeloaded ~= true then
+&#9;&#9;&#9;return
+&#9;&#9;end
+&#9;elseif key == &quot;q&quot; then
+&#9;&#9;Sighton()
+&#9;elseif key == &quot;0&quot; then
+&#9;&#9;if run == false then
+&#9;&#9;&#9;Sprint()
+&#9;&#9;elseif run == true then
+&#9;&#9;&#9;print(&quot;runFalse&quot;)
+&#9;&#9;end
+&#9;elseif key == &quot;e&quot; then
+&#9;&#9;if nadeloaded == true then
+&#9;&#9;&#9;nadeloaded = false
+&#9;&#9;&#9;script.Parent.Throw:play()
+&#9;&#9;&#9;firenade2(targetPos)
+&#9;&#9;&#9;wait(5)
+&#9;&#9;&#9;nadeloaded = true
+&#9;&#9;elseif nadeloaded ~= true then
+&#9;&#9;&#9;return
+&#9;&#9;end
+&#9;end
+end
+
+function CreateMelee()
+&#9;local M2 = Melee:clone()
+&#9;local p = Tool:GetChildren()
+&#9;for i = 1,#p do
+&#9;&#9;if p[i].className == &quot;Part&quot; then
+&#9;&#9;&#9;M2.Parent = p[i]
+&#9;&#9;end
+&#9;end
+end
+
+function unEquip()
+&#9;Tool.IsCrouched.Value = 0
+&#9;Tool.GripPos = Vector3.new(0.25, -0.1, -0.1)
+&#9;if sight.Value == 1 then
+&#9;&#9;Sighton()
+&#9;end
+end
+
+function onEquippedLocal(mouse)
+
+&#9;if mouse == nil then
+&#9;&#9;print(&quot;Mouse not found&quot;)
+&#9;&#9;return 
+&#9;end
+
+&#9;mouse.Icon = &quot;http://www.roblox.com/asset/?id=7419350&quot;
+
+&#9;Tool.Parent.Humanoid.Running:connect(Run)
+&#9;mouse.Button1Down:connect(function() onButton1Down(mouse) end)
+&#9;mouse.Button1Up:connect(function() onButton1Up(mouse) end)
+&#9;mouse.KeyDown:connect(pressedKey) 
+&#9;Tool.Unequipped:connect(unEquip)
+end
+
+Tool.Equipped:connect(onEquippedLocal)
+
+CreateMelee()</ProtectedString>
+			</Properties>
+			<Item class="Script" referent="RBX116">
+				<Properties>
+					<bool name="Disabled">true</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Damage</string>
+					<ProtectedString name="Source">window = script.Parent
+ball = script.Parent
+damage = 20
+bl = Instance.new(&quot;Part&quot;)
+bl.Size = Vector3.new(1,0.4,1)
+bl.formFactor = 2
+bl.BrickColor = BrickColor.new(21)
+function onTouched(hit)
+&#9;if hit.Parent:findFirstChild(&quot;Humanoid&quot;)~=nil then&#9;
+&#9;&#9;if game.Players:findFirstChild(hit.Parent.Name):findFirstChild(&quot;Spawn&quot;) == nil then
+&#9;&#9;&#9;if game.Players:findFirstChild(hit.Parent.Name).TeamColor == game.Teams.Spetsnaz.TeamColor then
+&#9;&#9;&#9;&#9;if ball.Teamcolor.Value ~= game.Teams.Spetsnaz then
+&#9;&#9;&#9;&#9;&#9;hit.Parent[&quot;Humanoid&quot;]:TakeDamage(damage)
+&#9;&#9;&#9;&#9;&#9;tagHumanoid(hit.Parent.Humanoid)
+&#9;&#9;&#9;&#9;&#9;bleed()
+&#9;&#9;&#9;&#9;&#9;wait(2)
+&#9;&#9;&#9;&#9;&#9;untagHumanoid(hit.Parent.Humanoid)
+&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;return
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;if ball.Teamcolor.Value ~= game.Teams[&quot;S.A.S&quot;] then
+&#9;&#9;&#9;&#9;&#9;hit.Parent[&quot;Humanoid&quot;]:TakeDamage(damage)
+&#9;&#9;&#9;&#9;&#9;tagHumanoid(hit.Parent.Humanoid)
+&#9;&#9;&#9;&#9;&#9;bleed()
+&#9;&#9;&#9;&#9;&#9;wait(2)
+&#9;&#9;&#9;&#9;&#9;untagHumanoid(hit.Parent.Humanoid)
+&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;return
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;elseif game.Players:findFirstChild(hit.Parent.Name):findFirstChild(&quot;Spawn&quot;) ~= nil then
+&#9;&#9;&#9;return
+&#9;&#9;end
+&#9;end
+&#9;wait()
+&#9;script.Parent.Parent = nil
+end
+function tagHumanoid(humanoid)
+&#9;local tag = ball:findFirstChild(&quot;creator&quot;)
+&#9;if tag ~= nil then
+&#9;&#9;local new_tag = tag:clone()
+&#9;&#9;new_tag.Parent = humanoid
+&#9;end
+end
+
+
+function untagHumanoid(humanoid)
+&#9;if humanoid ~= nil then
+&#9;&#9;local tag = humanoid:findFirstChild(&quot;creator&quot;)
+&#9;&#9;if tag ~= nil then
+&#9;&#9;&#9;tag.Parent = nil
+&#9;&#9;end
+&#9;end
+end
+
+function bleed()
+&#9;local b = bl:Clone()
+&#9;b.Parent = workspace
+&#9;b.CFrame = script.Parent.CFrame + Vector3.new(math.random(-1,1) / 2, math.random(0,2), math.random(-1,1) / 0.5)
+&#9;b.Velocity = Vector3.new(math.random(-15,15),math.random(-5, 50),math.random(-15,15))
+&#9;local s = script.CleanShell:Clone()
+&#9;s.Disabled = false
+&#9;s.Parent = b
+end
+
+script.Parent.Touched:connect(onTouched)</ProtectedString>
+				</Properties>
+				<Item class="Script" referent="RBX117">
+					<Properties>
+						<bool name="Disabled">true</bool>
+						<Content name="LinkedSource"><null></null></Content>
+						<string name="Name">CleanShell</string>
+						<ProtectedString name="Source">wait(5)
+
+script.Parent:Remove()
+</ProtectedString>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="Script" referent="RBX118">
+				<Properties>
+					<bool name="Disabled">true</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Removal</string>
+					<ProtectedString name="Source">wait(5)
+script.Parent:Remove()</ProtectedString>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX119">
+				<Properties>
+					<bool name="Disabled">true</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">FlashbangScript</string>
+					<ProtectedString name="Source">local b = Instance.new(&quot;Part&quot;);
+b.Name = &quot;Bang&quot;;
+b.TopSurface = 0;
+b.BottomSurface = 0;
+b.Shape = 0;
+b.Anchored = true;
+b.Locked = true;
+b.CanCollide = false;
+b.BrickColor = BrickColor.new(1);
+b.Size = Vector3.new(50, 50, 50);
+
+
+function onTouched(hit)
+&#9;if hit.Parent.Humanoid ~= nil then
+&#9;&#9;detonate()
+&#9;elseif hit.Parent.Humanoid == nil then
+&#9;&#9;return
+&#9;end
+end
+
+function onTouched(hit)
+&#9;humanoid = hit.Parent:findFirstChild(&quot;Humanoid&quot;)
+&#9;if humanoid~=nil then
+&#9;&#9;detonate()
+&#9;elseif hit.Name == &quot;Projectile&quot; then
+&#9;&#9;detonate()
+&#9;end
+end
+
+connection = script.Parent.Touched:connect(onTouched)
+
+function detonate()
+&#9;script.Parent.Anchored = true;
+
+&#9;b.Parent = workspace;
+&#9;b.CFrame = CFrame.new(script.Parent.Position);
+
+&#9;local c = game.Players:GetChildren();
+
+&#9;for i = 1, #c do
+&#9;&#9;local char = c[i].Character;
+
+&#9;&#9;local head = char.Head;
+
+&#9;&#9;local targ = head.Position - script.Parent.Position;
+&#9;&#9;local mag = targ.magnitude;
+
+&#9;&#9;if mag &lt;= 25 then
+&#9;&#9;&#9;if char:findFirstChild(&quot;Goggles&quot;) == nil then&#9;
+&#9;&#9;&#9;&#9;local b = Instance.new(&quot;BodyAngularVelocity&quot;)
+&#9;&#9;&#9;&#9;b.angularvelocity = Vector3.new(30,40,30)
+&#9;&#9;&#9;&#9;local s = script.CameraManipulate:Clone()
+&#9;&#9;&#9;&#9;s.Disabled = false;
+&#9;&#9;&#9;&#9;s.Parent = char;
+&#9;&#9;&#9;&#9;b.Parent = char.Torso
+&#9;&#9;&#9;elseif char:findFirstChild(&quot;Goggles&quot;) ~= nil then
+&#9;&#9;&#9;&#9;print(&quot;goggles&quot;)
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+
+&#9;script.Parent.Transparency = 1;
+
+&#9;local s = script.RemoveTrans:Clone();
+&#9;s.Disabled = false;
+&#9;s.Parent = b;
+
+&#9;script.Parent:Remove();
+end
+
+wait(3)
+
+detonate();</ProtectedString>
+				</Properties>
+				<Item class="Script" referent="RBX120">
+					<Properties>
+						<bool name="Disabled">true</bool>
+						<Content name="LinkedSource"><null></null></Content>
+						<string name="Name">RemoveTrans</string>
+						<ProtectedString name="Source">local b = script.Parent;
+
+for i = 1, 10 do
+&#9;b.Transparency = b.Transparency + 0.1;
+&#9;wait(0.1);
+end
+
+b:Remove();</ProtectedString>
+					</Properties>
+				</Item>
+				<Item class="LocalScript" referent="RBX121">
+					<Properties>
+						<bool name="Disabled">true</bool>
+						<Content name="LinkedSource"><null></null></Content>
+						<string name="Name">CameraManipulate</string>
+						<ProtectedString name="Source">local lblock = Instance.new(&quot;Part&quot;);
+
+shake = false
+
+lblock.formFactor = 0;
+lblock.BottomSurface = 0;
+lblock.TopSurface = 0;
+lblock.BrickColor = BrickColor.new(1);
+lblock.Anchored = true;
+lblock.Locked = true;
+lblock.CanCollide = false;
+lblock.Name = &quot;LightBlock&quot;;
+lblock.Size = Vector3.new(10, 10, 1);
+
+local human = script.Parent;
+
+lblock.Parent = workspace.CurrentCamera;
+
+local cam = workspace.CurrentCamera
+
+function checkIfDead()
+&#9;if human.Humanoid.Health &lt;= 0 then
+&#9;&#9;lblock:Remove();
+&#9;&#9;script:Remove();
+&#9;end
+end
+
+checkIfDead()
+local bg = Instance.new(&quot;BodyGyro&quot;)
+local p = human:GetChildren()
+&#9;for i = 1,#p do
+&#9;&#9;if p[i].className == &quot;Part&quot; then
+&#9;&#9;&#9;shake = true
+&#9;&#9;&#9;bg.Parent = p[i]
+&#9;&#9;&#9;human.Humanoid.WalkSpeed = 10
+&#9;&#9;end
+&#9;end
+
+local d = human:GetChildren()
+for i = 1,#d do
+&#9;if d[i].className == &quot;Tool&quot; then
+&#9;&#9;local f = d[i]:GetChildren()
+&#9;&#9;for i = 1,#f do
+&#9;&#9;&#9;if f[i].Name == &quot;IsCrouched&quot; then
+&#9;&#9;&#9;&#9;if f[i].Value == 1 then
+&#9;&#9;&#9;&#9;&#9;f[i].Value = 0
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+end
+
+for i = 1, 10 do
+&#9;checkIfDead();
+
+&#9;local head = human:FindFirstChild(&quot;Head&quot;);
+
+&#9;if head == nil then
+&#9;&#9;checkIfDead();
+&#9;end
+
+&#9;local targ = head.Position - cam.CoordinateFrame.p;
+
+&#9;local dir = targ / targ.magnitude;
+
+&#9;local cpos = cam.CoordinateFrame.p + (dir * 2.5);
+
+&#9;local head = human:FindFirstChild(&quot;Head&quot;);
+
+&#9;if head == nil then
+&#9;&#9;checkIfDead();
+&#9;end
+
+&#9;lblock.CFrame = CFrame.new(cpos,head.Position);
+
+&#9;wait(0.1);
+end
+
+for i = 1, 7 do
+
+&#9;local head = human:FindFirstChild(&quot;Head&quot;);
+
+&#9;if head == nil then
+&#9;&#9;checkIfDead();
+&#9;end
+
+&#9;local targ = head.Position - cam.CoordinateFrame.p;
+
+&#9;local dir = targ / targ.magnitude;
+
+&#9;local cpos = cam.CoordinateFrame.p + (dir * 2.5);
+
+&#9;local head = human:FindFirstChild(&quot;Head&quot;);
+
+&#9;if head == nil then
+&#9;&#9;checkIfDead();
+&#9;end
+
+&#9;lblock.CFrame = CFrame.new(cpos,head.Position);
+
+&#9;wait(0.025);
+
+&#9;lblock.Transparency = lblock.Transparency + (1 / 10);
+end
+
+lblock:Remove();
+
+for i = 1,100 do
+&#9;wait(0.1)
+&#9;if shake == true then
+&#9;&#9;local cam_rot = cam.CoordinateFrame - cam.CoordinateFrame.p
+&#9;&#9;local cam_scroll = (cam.CoordinateFrame.p - cam.Focus.p).magnitude
+&#9;&#9;local ncf = CFrame.new(cam.Focus.p)*cam_rot*CFrame.fromEulerAnglesXYZ(math.random(-4, 4)/20, math.random(-4, 4)/20, 0)
+&#9;&#9;cam.CoordinateFrame = ncf*CFrame.new(0, 0, cam_scroll)
+&#9;elseif shake ~= true then
+&#9;&#9;return
+&#9;end
+end
+bg:Remove()
+human.Humanoid.WalkSpeed = 16
+shake = false
+script:Remove()</ProtectedString>
+					</Properties>
+				</Item>
+			</Item>
+		</Item>
+		<Item class="LocalScript" referent="RBX122">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">LocalMelee</string>
+				<ProtectedString name="Source">--[[
+
+Dax,
+
+See the MeleeScript.
+
+]]
+
+local canmelee = true;
+local tool = script.Parent;
+
+function onKeyDown(key)
+&#9;key:lower();
+&#9;if key == &quot;v&quot; then
+&#9;&#9;if canmelee == false then
+&#9;&#9;&#9;return;
+&#9;&#9;end
+
+&#9;&#9;tool.Melee:play()
+
+&#9;&#9;canmelee = false;
+
+&#9;&#9;local rgrip = tool.Parent[&quot;Right Arm&quot;].RightGrip;
+
+&#9;&#9;script.melee.Value = true;
+
+&#9;&#9;for i = 1,6 do
+&#9;&#9;&#9;rgrip.C1 = rgrip.C1 * CFrame.fromEulerAnglesXYZ(0.535,0,0);
+&#9;&#9;&#9;wait();
+&#9;&#9;end
+
+&#9;&#9;wait(0.25);
+
+&#9;&#9;for i = 1, 6 do
+&#9;&#9;&#9;rgrip.C1 = rgrip.C1 * CFrame.fromEulerAnglesXYZ(-0.535,0,0);
+&#9;&#9;&#9;wait();
+&#9;&#9;end
+
+&#9;&#9;script.melee.Value = false;
+
+&#9;&#9;wait(0.5);
+
+&#9;&#9;canmelee = true;
+&#9;end
+end
+
+function onSelect(mouse)
+&#9;mouse.KeyDown:connect(onKeyDown);
+end
+
+
+function blow(hit)
+&#9;local humanoid = hit.Parent:findFirstChild(&quot;Humanoid&quot;)
+&#9;if not humanoid then return end
+&#9;local vCharacter = Tool.Parent
+&#9;local vPlayer = game.Players:playerFromCharacter(vCharacter)
+&#9;local hum = vCharacter:findFirstChild(&quot;Humanoid&quot;) -- non-nil if tool held by a character
+&#9;if humanoid ~= hum and hum ~= nil and game.Players:playerFromCharacter(humanoid.Parent) and game.Players:playerFromCharacter(humanoid.Parent).TeamColor~=cc then
+&#9;&#9;tagHumanoid(humanoid, vPlayer)
+&#9;&#9;humanoid:TakeDamage(160)
+&#9;&#9;wait(1)
+&#9;&#9;untagHumanoid(humanoid)
+&#9;end
+end
+
+
+tool.Equipped:connect(onSelect);</ProtectedString>
+			</Properties>
+			<Item class="BoolValue" referent="RBX123">
+				<Properties>
+					<string name="Name">melee</string>
+					<bool name="Value">false</bool>
+				</Properties>
+			</Item>
+		</Item>
+	</Item>
+</roblox>
